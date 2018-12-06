@@ -3,15 +3,15 @@ package gameEngine;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL46.*;
 
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
 
+import io.Cursor;
 import io.Input;
 
 
 public class Window {
-
+	@SuppressWarnings("unused")
 	
 
 	private long window;
@@ -22,6 +22,8 @@ public class Window {
 	private boolean fullscreen;
 	private GLFWVidMode videoMode;
 	private Input input;
+	private boolean hasResized;
+	private GLFWWindowSizeCallback windowSizeCallback;
 
 	
 	
@@ -32,7 +34,7 @@ public class Window {
 		this.title = title;
 		this.fullscreen = fullscreen;
 		this.share = share;
-		
+		hasResized = false;
 
 	}
 	
@@ -60,13 +62,23 @@ public class Window {
 	glfwShowWindow(window);
 	
 	input = new Input (window);
-	
+	setLocalCallbacks();
 	GL.createCapabilities();
 	
 	glEnable(GL_TEXTURE_2D);
+	
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	
+	@SuppressWarnings("unused")
+	Cursor cursor = new Cursor("./resource/textures/cursor/cursor.png", window);
 
 	
  }
+  
+  public void cleanUp() {
+	  windowSizeCallback.close();
+  }
   
   
   //ERROR INFO 
@@ -85,31 +97,39 @@ public class Window {
 	  
   }
   
+  private void setLocalCallbacks() {
+	  windowSizeCallback = new GLFWWindowSizeCallback() {
+		@Override
+		public void invoke(long argWindow, int argWidth, int argHeight) {
+			width = argWidth;
+			height = argHeight;
+			hasResized = true;
+		}
+	};
+	
+	glfwSetWindowSizeCallback(window, windowSizeCallback);
+  }
+  
   
   
   
   //RETURN MOST OF THE VARIABLES VIA FUNCTIONS
-  public long getPrimaryMonitor() {  return glfwGetPrimaryMonitor(); }
-  
+  public long getPrimaryMonitor() {  return glfwGetPrimaryMonitor(); }  
   public long getWindow() {  return window; }
-  
- public int getWidth() {  return width;  }
-  
+  public int getWidth() {  return width;  } 
   public int getHeight() {  return height;  }
-  
+  public boolean hasResize() { return hasResized; }
   public String getTitle() { return title; }
-  
   public int isSharing() { return share; }
-  
-  public GLFWVidMode getVidMode() {  return videoMode; }
-  
+  public GLFWVidMode getVidMode() {  return videoMode; } 
   public boolean isFullscreen() {  return fullscreen;  }
-  
   public boolean shouldClose() {  return glfwWindowShouldClose(window);  }
-
   public Input getInput() { return input; }
-  
-  public void update() { input.update(); glfwPollEvents();}
+  public void update() { 
+	  hasResized = false;
+	  input.update(); 
+	  glfwPollEvents();
+  }
 
 
 }

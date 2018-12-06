@@ -45,6 +45,12 @@ public class Model {
 		
 	}
 	
+	protected void finalize() {
+		glDeleteBuffers(v_id);
+		glDeleteBuffers(t_id);
+		glDeleteBuffers(i_id);
+	}
+	
 	public void render() {
 		
 		glEnableVertexAttribArray(0);

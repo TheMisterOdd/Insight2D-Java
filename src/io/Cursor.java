@@ -1,18 +1,14 @@
 package io;
 
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import java.awt.image.*;
+import java.io.*;
+import java.nio.*;
 
-import javax.imageio.ImageIO;
+import javax.imageio.*;
 
-import org.lwjgl.BufferUtils;
-import org.lwjgl.glfw.GLFW;
+import org.lwjgl.*;
+import org.lwjgl.glfw.*;
 import static org.lwjgl.glfw.GLFW.*;
-import org.lwjgl.glfw.GLFWImage;
 
 
 public class Cursor {

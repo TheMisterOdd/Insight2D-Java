@@ -2,13 +2,11 @@ package render;
 
 import static org.lwjgl.opengl.GL46.*;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.nio.FloatBuffer;
+import java.io.*;
+import java.nio.*;
 
-import org.joml.Matrix4f;
-import org.lwjgl.BufferUtils;
+import org.joml.*;
+import org.lwjgl.*;
 
 public class Shader {
 
@@ -59,6 +57,14 @@ public class Shader {
 		
 	}
 	
+	protected void finalize() {
+		glDetachShader(program, vs);
+		glDetachShader(program, fs);
+		glDeleteShader(vs);
+		glDeleteShader(fs);
+		glDeleteProgram(program);
+	}
+	
 	public void setUniform(String name, float value) {
 		
 		int location = glGetUniformLocation(program, name);
@@ -68,7 +74,14 @@ public class Shader {
 		
 	}
 	
-public void setUniform(String name, Matrix4f value) {
+	public void setUniform(String uniformName, Vector4f value) {
+		int location = glGetUniformLocation(program, uniformName);
+		if(location != -1) {
+			glUniform4f(location, value.x, value.y, value.z, value.w);
+		}
+	}
+	
+    public void setUniform(String name, Matrix4f value) {
 		
 		int location = glGetUniformLocation(program, name);
 		FloatBuffer buffer = BufferUtils.createFloatBuffer(16);
@@ -92,7 +105,7 @@ public void setUniform(String name, Matrix4f value) {
 		
 		try {
 			
-			br = new BufferedReader(new FileReader(new File("./res/shaders/" + Filename)));
+			br = new BufferedReader(new FileReader(new File("./resource/shaders/" + Filename)));
 			String line;
 			while((line = br.readLine()) != null) {
 				
