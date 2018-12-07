@@ -1,6 +1,7 @@
 package game;
 
 import org.lwjgl.*;
+import org.lwjgl.opengl.GL;
 
 import GUI.*;
 import assest.*;
@@ -22,7 +23,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 			
-		Window.setCallbacks();	
+		Window.setCallbacks();
 		Camera camera = new Camera(win.getWidth(), win.getHeight());
 		win.Init();
 		System.out.println("Using LWJGL " + Version.getVersion() + ", OpenGL "+ glGetString(GL_VERSION) +  ", in " + System.getProperty("os.name") +".");
