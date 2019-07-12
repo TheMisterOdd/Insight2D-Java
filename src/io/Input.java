@@ -8,6 +8,7 @@ public class Input {
 	private long window;
 	
 	private boolean keys[];
+	private boolean mouseButtons[];
 	
 	private static Vector2f mousePos = new Vector2f();
 	private static double[] x = new double[1], y = new double[1];
@@ -16,8 +17,12 @@ public class Input {
 	public Input(long window) {
 		this.window = window;
 		this.keys = new boolean[GLFW_KEY_LAST];
+		this.mouseButtons = new boolean[GLFW_MOUSE_BUTTON_LAST];
 		for (int i = 0; i < GLFW_KEY_LAST; i++)
 			keys[i] = false;
+		
+		for (int i = 0; i < GLFW_MOUSE_BUTTON_LAST; i++)
+			mouseButtons[i] = false;
 	}
 	
 	public boolean isKeyDown(int key) {
@@ -34,6 +39,10 @@ public class Input {
 	
 	public boolean isMouseButtonDown(int button) {
 		return glfwGetMouseButton(window, button) == 1;
+	}
+	
+	public boolean isMouseButtonPressed(int button) {
+		return (isMouseButtonDown(button) && !mouseButtons[button]);
 	}
 	
 	public Vector2f getMousePosition() {

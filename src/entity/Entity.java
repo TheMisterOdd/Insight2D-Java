@@ -4,7 +4,7 @@ import org.joml.*;
 
 import assest.*;
 import collision.*;
-import gameEngine.*;
+import display.*;
 import render.*;
 import world.*;
 
@@ -14,25 +14,31 @@ public class Entity {
 	protected AABB bounding_boxes;
 	protected Animation[] animations;
 	private int use_animation;
-	protected Transform transform;
+	public static Transform transform;
+	
+	public Vector2f gravity;
+	static final public Vector2f uVelocity = new Vector2f(0, 10); 
+	public Vector2f velocity;
 	
 	public Entity(int max_animations, Transform transform) {
 
-				this.animations = new Animation[max_animations];
-				this.transform = transform;
-				this.use_animation = 0;
+			this.animations = new Animation[max_animations];
+			this.transform = transform;
+			this.use_animation = 0;
 				
-				bounding_boxes = new AABB(new Vector2f(transform.pos.x, transform.pos.y), new Vector2f(transform.scale.x, transform.scale.y));
+			bounding_boxes = new AABB(new Vector2f(transform.pos.x, transform.pos.y), new Vector2f(transform.scale.x, transform.scale.y));
 		
+			this.gravity = new Vector2f(0, -10);
+			this.velocity = uVelocity;
 	}
 	
 	
 	protected void setAnimation(int index, Animation animation) {
-		animations[index] = animation;
+		animations[index] = animation;	
 	}
 	
 	public void useAnimation(int index) {
-		this.use_animation = index;
+		this.use_animation = index;	
 	}
 	
 	public void move(Vector2f direction) {
@@ -51,7 +57,7 @@ public class Entity {
 				boxes[i + j * 5] = world.getTilesBoundingBox(
 						(int)(((transform.pos.x / 2) + 0.5f) - (5/2)) + i,
 						(int)(((-transform.pos.y / 2) + 0.5f) - (5/2)) + j	
-				);
+			);
 		
 		
 		
@@ -81,7 +87,7 @@ public class Entity {
 		
 	}
 	
-	public void update(float delta, Window window, Camera camera, World world) {	
+	public void update(float delta, Display window, Camera camera, World world) {	
 		collideWithTiles(world);
 	}
 	

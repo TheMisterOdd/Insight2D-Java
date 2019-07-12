@@ -10,7 +10,13 @@ public class Transform {
 	public Transform() {
 		
 		pos = new Vector3f();
-		scale = new Vector3f(1,1,1);
+		scale = new Vector3f(3f,3f,1f);
+	}
+	
+	public Vector3f getScale() {
+		
+		return pos;
+		
 	}
 	
 	public Matrix4f getProjection(Matrix4f target) {

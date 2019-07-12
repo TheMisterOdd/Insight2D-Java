@@ -1,7 +1,6 @@
 package render;
 
-import gameEngine.*;
-
+import static org.lwjgl.glfw.GLFW.*;
 
 public class Animation {
 	private Texture[] frames;
@@ -16,7 +15,7 @@ public class Animation {
 		this.texturePointer = 0;
 		this.elapsedTime = 0;
 		this.currentTime = 0;
-		this.lastTime = Timer.getTime();
+		this.lastTime = glfwGetTime();
 		this.fps = 1.0 / fps;
 		
 		this.frames = new Texture[amount];
@@ -28,7 +27,7 @@ public class Animation {
 	public void bind() { bind(0); }
 	
 	public void bind(int sampler) {
-		this.currentTime = Timer.getTime();
+		this.currentTime = glfwGetTime();
 		this.elapsedTime += currentTime - lastTime;
 		
 		if (elapsedTime >= fps) {

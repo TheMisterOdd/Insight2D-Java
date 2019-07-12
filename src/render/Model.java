@@ -20,7 +20,6 @@ public class Model {
 		draw_count = indices.length;
 		
 		
-		
 		v_id = glGenBuffers();
 		glBindBuffer(GL_ARRAY_BUFFER, v_id);
 		glBufferData(GL_ARRAY_BUFFER, createBuffer(vertices), GL_STATIC_DRAW);

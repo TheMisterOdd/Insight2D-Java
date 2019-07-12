@@ -12,14 +12,14 @@ public class TileRender {
 	private Model model;
 	
 	float[] vertices = new float[] {
-			   -1f, 1f, 0,
-				1f, 1f, 0,
-				1f, -1f, 0,
-				-1f, -1f, 0
+			   -1f,  1f,  0,
+				1f,  1f,  0,
+				1f, -1f,  0,
+			   -1f, -1f,  0
 			};
 	float[] texture = new float[] {
 			0, 0,
-			0, 1 ,
+			0, 1,
 			1, 1,
 			1, 0
 	};
@@ -28,7 +28,7 @@ public class TileRender {
 			2, 3, 0
 	};
 	
-	@SuppressWarnings("unused")
+
 	public TileRender() {
 		
 		tile_textures = new HashMap<String, Texture>();

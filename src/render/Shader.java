@@ -55,6 +55,8 @@ public class Shader {
 			System.exit(-1);
 		}
 		
+		Filename = null;
+		
 	}
 	
 	protected void finalize() {
@@ -105,7 +107,7 @@ public class Shader {
 		
 		try {
 			
-			br = new BufferedReader(new FileReader(new File("./resource/shaders/" + Filename)));
+			br = new BufferedReader(new FileReader(new File("resources/shaders/" + Filename)));
 			String line;
 			while((line = br.readLine()) != null) {
 				
@@ -120,7 +122,9 @@ public class Shader {
 			e.printStackTrace();
 		}
 		
-
+		br = null;
+		Filename = null;
+		
 		return string.toString();
 		
 	}

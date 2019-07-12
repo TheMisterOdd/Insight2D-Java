@@ -1,30 +1,17 @@
 package world;
 
 public class Tiles {
-	public static Tiles tiles[] = new Tiles[255];
+	public static Tiles tiles[] = new Tiles[16];
 	public static byte not = 0;
 	
-	public static final Tiles grass = new Tiles("tiles/grass");//0
-	public static final Tiles test = new Tiles("test").setSolid();//1
-	public static final Tiles grass_top = new Tiles("tiles/grass_up");//2
-	public static final Tiles grass_down = new Tiles("tiles/grass_down");//3
-	public static final Tiles grass_left = new Tiles("tiles/grass_left");//4
-	public static final Tiles grass_right = new Tiles("tiles/grass_right");//5
-	public static final Tiles topleft_grass = new Tiles("tiles/grass_topleft");//6
-	public static final Tiles topright_grass = new Tiles("tiles/grass_topright");//7
-	public static final Tiles downleft_grass = new Tiles("tiles/grass_downleft");//8
-	public static final Tiles downright_grass = new Tiles("tiles/grass_downright");//9
-	public static final Tiles topleft_grass_sand = new Tiles("tiles/grasssand_topleft");//10
-	public static final Tiles cut_tree = new Tiles("tiles/cut_tree_grass").setSolid();//11
-	public static final Tiles tree_grass_trunk = new Tiles("tiles/tree_grass");//12
-	public static final Tiles tree_grass_center = new Tiles("tiles/tree_grass_center").setSolid();//13
-	public static final Tiles tree_grass_downleft = new Tiles("tiles/tree_grass_downleft");//14
-	public static final Tiles tree_grass_downright = new Tiles("tiles/tree_grass_downright");//15
-	public static final Tiles tree_grass_top = new Tiles("tiles/tree_grass_top").setSolid();//16
-	public static final Tiles tree_grass_topleft = new Tiles("tiles/tree_grass_topleft");//17
-	public static final Tiles tree_grass_topright = new Tiles("tiles/tree_grass_topright");//18
-	public static final Tiles grass_sand_down = new Tiles("tiles/grasssand_down");//19
-	public static final Tiles grass_sand_downleft = new Tiles("tiles/grasssand_downleft");//20
+	public static final Tiles grass = new Tiles("tileset/default");//0
+	public static final Tiles grass_top = new Tiles("tileset/grass_top");//1
+	public static final Tiles grass_corner_left_up = new Tiles("tileset/grass_corner_left_up");//2
+	public static final Tiles grass_corner_right_up = new Tiles("tileset/grass_corner_right_up");//3
+    //public static final Tiles grass_corner_left_down = new Tiles("tileset/grass_corner_right_down");//3
+    public static final Tiles grass_left = new Tiles("tileset/grass_left").setSolid();//4
+    public static final Tiles grass_right = new Tiles("tileset/grass_right").setSolid();//5
+	public static final Tiles test = new Tiles("test").setSolid();//6
 	
 	private byte id;
 	private boolean solid;
