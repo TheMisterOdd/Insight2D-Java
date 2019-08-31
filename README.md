@@ -33,7 +33,7 @@ int main(void) {
 
 ##### Dependencies
   * **LWJGL** https://www.lwjgl.org/
-  * **JOML** https://glm.g-truc.net
+  * **JOML** https://github.com/JOML-CI/JOML
 
 ##### Examples
 <img width="854" height="480" src="https://raw.githubusercontent.com/AlKiam/InsightEngine/master/images/exmple1.png" alt="window output"/>
