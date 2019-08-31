@@ -1,6 +1,6 @@
 # Insight Engine, free and OpenSource Engine. Using OpenGL
 ### 2D and 3D cross-platform game engine
-Insight Engine is a **C++**, multiplatform game engine to create 2D and 3D games. It provides a varaity of new classes to handle different aspects like **window, input, model loading, shaders, audio...**
+Insight Engine is a **Java**, multiplatform game engine to create 2D and 3D games. It provides a varaity of new classes to handle different aspects like **window, input, model loading, shaders, audio...**
 
 Unfortunately we have not managed to port the engine to Android or HTML, nor translate it into any other language, we will try this in later versions.
 
@@ -21,7 +21,6 @@ public class MyClass {
             glClearColor(1.f, 0.f, 0.f, 1.f);
          
         }
-
     }
 }
 
