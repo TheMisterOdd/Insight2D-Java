@@ -32,7 +32,7 @@ int main(void) {
 <img width="854" height="480" src="https://raw.githubusercontent.com/AlKiam/InsightEngine/master/images/examplewindow.png" alt="window output"/>
 
 ##### Dependencies
-  * **LWJGL** https://www.glfw.org/
+  * **LWJGL** https://www.lwjgl.org/
   * **JOML** https://glm.g-truc.net
 
 ##### Examples
