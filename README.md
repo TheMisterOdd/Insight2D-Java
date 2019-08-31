@@ -8,25 +8,24 @@ Unfortunately we have not managed to port the engine to Android or HTML, nor tra
 Insight is completely free and open source under GNU General Public License. No strings attached, no royalties, nothing. The users' games are theirs, down to the last line of engine code. We don't want to make profit from this project.
 
 ### Example code
-```cpp
-#include "Window.h"
+```java
 
-int main(void) {
- 
-   Window* window = new Window(1280, 720, false); // Defining the width, height and the fullscreen state
-   window->init("OpenGL"); // Init the window with the title
-   
-   while (window->isRunning()) // Check if window is running
-   {
-      
-      glClear(GL_COLOR_BUFFER_BIT);          // Clear color buffer
-      glClearColor(1.0f, 0.0f, 0.0f, 1.0f);  // Setting clear color
-      
-      window->pollEvents(); // Polling events
-   }
-   
-   return 0;
+public class MyClass {
+    public static void main(String[] args) {
+        
+        Window window = new Window(1280, 720, "OpenGL Test", false);
+        
+        while (window.isRunning()) {
+            
+            glClear(GL_COLOR_BUFFER_BIT);
+            glClearColor(1.f, 0.f, 0.f, 1.f);
+         
+        }
+
+    }
 }
+
+
 ```
 ### Output
 <img width="854" height="480" src="https://raw.githubusercontent.com/AlKiam/InsightEngine/master/images/examplewindow.png" alt="window output"/>
